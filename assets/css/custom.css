@@ -1,0 +1,78 @@
+/* =========================================================
+   ANDREAS PORTFOLIO
+   Modern Japanese Design
+   ========================================================= */
+
+:root {
+    --portfolio-bg: #f5f7f8;
+    --portfolio-bg-soft: #edf1f4;
+    --portfolio-surface: #ffffff;
+
+    --portfolio-blue-900: #102a43;
+    --portfolio-blue-800: #163a5f;
+    --portfolio-blue-700: #1d4e73;
+    --portfolio-blue-600: #286789;
+    --portfolio-blue-500: #3b7ea1;
+
+    --portfolio-red: #c84b4b;
+
+    --portfolio-text: #17212b;
+    --portfolio-text-secondary: #52606d;
+    --portfolio-border: #d7dee4;
+}
+
+
+/* =========================================================
+   PAGE
+   ========================================================= */
+
+html {
+    background: var(--portfolio-bg) !important;
+}
+
+body {
+    background: var(--portfolio-bg) !important;
+    color: var(--portfolio-text) !important;
+}
+
+
+/* =========================================================
+   TEXT
+   ========================================================= */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: var(--portfolio-blue-900) !important;
+}
+
+p {
+    color: var(--portfolio-text-secondary);
+}
+
+
+/* =========================================================
+   LINKS
+   ========================================================= */
+
+a {
+    color: var(--portfolio-blue-700);
+}
+
+a:hover {
+    color: var(--portfolio-red);
+}
+
+
+/* =========================================================
+   SELECTION
+   ========================================================= */
+
+::selection {
+    background: var(--portfolio-blue-800);
+    color: white;
+}
+

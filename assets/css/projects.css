@@ -1,191 +1,88 @@
+/* =========================================================
+   PROJECTS PAGE
+   ========================================================= */
+
 .projects-page {
-    width: min(1200px, calc(100% - 48px));
+    max-width: 1100px;
     margin: 0 auto;
-    padding: 80px 0 120px;
+    padding: 6rem 2rem 8rem;
 }
 
 .projects-header {
-    margin-bottom: 50px;
+    margin-bottom: 5rem;
 }
 
 .projects-header h1 {
-    margin: 0 0 12px;
-    font-size: 3rem;
-    font-weight: 700;
+    margin: 0;
+    color: #102a43;
+    font-size: clamp(3rem, 7vw, 6rem);
+    line-height: 0.95;
+    letter-spacing: -0.05em;
 }
 
 .projects-header p {
-    margin: 0;
-    max-width: 650px;
+    max-width: 600px;
+    margin-top: 1.5rem;
+    color: #52606d;
     font-size: 1.1rem;
-    opacity: 0.7;
+    line-height: 1.7;
 }
 
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 24px;
+    grid-template-columns: 1fr;
 }
 
 .project-card {
-    display: flex;
-    flex-direction: column;
-    min-height: 260px;
-    padding: 32px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 2rem;
 
-    border: 1px solid rgba(128, 128, 128, 0.25);
-    border-radius: 16px;
+    padding: 2.5rem 0;
 
-    transition:
-            transform 0.25s ease,
-            box-shadow 0.25s ease,
-            border-color 0.25s ease;
+    border-top: 1px solid #d7dee4;
 }
 
-.project-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
-    border-color: rgba(128, 128, 128, 0.5);
+.project-card:last-child {
+    border-bottom: 1px solid #d7dee4;
 }
 
 .project-card h2 {
-    margin: 0 0 12px;
-    font-size: 1.6rem;
+    margin: 0;
 }
 
 .project-card h2 a {
+    color: #102a43;
+    font-size: 2rem;
     text-decoration: none;
+}
+
+.project-card h2 a:hover {
+    color: #c84b4b;
 }
 
 .project-card p {
-    margin: 0;
-    line-height: 1.7;
-    opacity: 0.7;
+    margin-top: 0.5rem;
+    color: #52606d;
 }
 
-.project-card > a {
-    margin-top: auto;
-    padding-top: 30px;
-
-    font-weight: 600;
+.project-link {
+    color: #1d4e73;
     text-decoration: none;
+    white-space: nowrap;
+}
+
+.project-link:hover {
+    color: #c84b4b;
 }
 
 @media (max-width: 700px) {
-
     .projects-page {
-        width: min(100% - 32px, 1200px);
-        padding-top: 50px;
-    }
-
-    .projects-header h1 {
-        font-size: 2.3rem;
-    }
-
-    .projects-grid {
-        grid-template-columns: 1fr;
+        padding: 4rem 1.5rem 6rem;
     }
 
     .project-card {
-        min-height: 220px;
-        padding: 24px;
-    }
-
-    .project-page {
-        width: min(900px, calc(100% - 48px));
-        margin: 0 auto;
-        padding: 80px 0 120px;
-    }
-
-    .project-header {
-        margin-bottom: 70px;
-    }
-
-    .project-label {
-        margin: 0 0 12px;
-        font-size: 0.75rem;
-        font-weight: 700;
-        letter-spacing: 0.15em;
-        text-transform: uppercase;
-        opacity: 0.5;
-    }
-
-    .project-header h1 {
-        margin: 0 0 20px;
-        font-size: 4rem;
-        line-height: 1.05;
-    }
-
-    .project-description {
-        max-width: 700px;
-        font-size: 1.25rem;
-        line-height: 1.6;
-        opacity: 0.65;
-    }
-
-    .project-content {
-        font-size: 1.05rem;
-        line-height: 1.8;
-    }
-
-    .project-content h2 {
-        margin-top: 60px;
-    }
-
-    .project-changelog {
-        margin-top: 100px;
-        padding-top: 60px;
-        border-top: 1px solid rgba(128, 128, 128, 0.25);
-    }
-
-    .changelog-header {
-        margin-bottom: 40px;
-    }
-
-    .changelog-header h2 {
-        margin: 0 0 10px;
-        font-size: 2.2rem;
-    }
-
-    .changelog-header p:last-child {
-        opacity: 0.6;
-    }
-
-    .changelog-list {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .changelog-entry {
-        padding: 30px 0;
-        border-top: 1px solid rgba(128, 128, 128, 0.2);
-    }
-
-    .changelog-date {
-        margin-bottom: 8px;
-        font-size: 0.8rem;
-        opacity: 0.5;
-    }
-
-    .changelog-entry h3 {
-        margin: 0 0 10px;
-        font-size: 1.4rem;
-    }
-
-    .changelog-entry h3 a {
-        text-decoration: none;
-    }
-
-    .changelog-entry p {
-        max-width: 650px;
-        margin: 0 0 15px;
-        line-height: 1.6;
-        opacity: 0.65;
-    }
-
-    .changelog-entry > a {
-        font-size: 0.9rem;
-        font-weight: 600;
-        text-decoration: none;
+        grid-template-columns: 1fr;
     }
 }

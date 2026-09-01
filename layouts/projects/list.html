@@ -17,21 +17,23 @@
 
     <div class="projects-grid">
 
-        {{ range where .Pages "Type" "project" }}
+        {{ range .Pages }}
 
         <article class="project-card">
 
-            <h2>
-                <a href="{{ .RelPermalink }}">
-                    {{ .Title }}
-                </a>
-            </h2>
+            <div>
+                <h2>
+                    <a href="{{ .RelPermalink }}">
+                        {{ .Title }}
+                    </a>
+                </h2>
 
-            {{ with .Description }}
-            <p>{{ . }}</p>
-            {{ end }}
+                {{ with .Description }}
+                <p>{{ . }}</p>
+                {{ end }}
+            </div>
 
-            <a href="{{ .RelPermalink }}">
+            <a class="project-link" href="{{ .RelPermalink }}">
                 View project →
             </a>
 
