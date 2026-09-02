@@ -238,7 +238,7 @@
     
     
     "mainEntityOfPage": "http://localhost:1313/Portfolio/projects/atlas/changelog/week-01/",
-    "wordCount":  72 
+    "wordCount":  245 
   }]
   </script>
 
@@ -467,7 +467,7 @@
   <div class="flex flex-row flex-wrap items-center">
     
     
-      <time datetime="2026-08-25T00:00:00&#43;00:00">25 August 2026</time><span class="px-2 text-primary-500">&middot;</span><span>72 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">1 min</span>
+      <time datetime="2026-08-25T00:00:00&#43;00:00">25 August 2026</time><span class="px-2 text-primary-500">&middot;</span><span>245 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">2 mins</span>
     
 
     
@@ -530,23 +530,7 @@
 
         <div class="article-content max-w-prose mb-20">
           <p>This week I started working on Atlas.</p>
-<p>The main goal was to establish the basic architecture of the application.</p>
-
-<h2 class="relative group">What I worked on
-    <div id="what-i-worked-on" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
-        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#what-i-worked-on" aria-label="Anchor">#</a>
-    </span>
-    
-</h2>
-<ul>
-<li>Created the initial project structure</li>
-<li>Started designing the database</li>
-<li>Worked with JPA and Hibernate</li>
-<li>Created the first entities</li>
-</ul>
+<p>The main goal was to establish the basic architecture of the application and create a solid foundation for the development process.</p>
 
 <h2 class="relative group">What I learned
     <div id="what-i-learned" class="anchor"></div>
@@ -557,7 +541,47 @@
     </span>
     
 </h2>
-<p>I got a better understanding of how JPA entities relate to each other.</p>
+
+<h3 class="relative group">JPA
+    <div id="jpa" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#jpa" aria-label="Anchor">#</a>
+    </span>
+    
+</h3>
+<p>I gained a better understanding of how JPA entities relate to each other and how these relationships can be mapped in Java.</p>
+<p>I also started learning how annotations such as <code>@OneToMany</code>, <code>@OneToOne</code>, and <code>@ManyToOne</code> can be used to define relationships between entities.</p>
+
+<h3 class="relative group">Annotations &amp; Lombok
+    <div id="annotations--lombok" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#annotations--lombok" aria-label="Anchor">#</a>
+    </span>
+    
+</h3>
+<p>I learned more about Java annotations and how they can be used to provide additional information to the application.</p>
+<p>I also worked with Lombok and learned how it can reduce boilerplate code by automatically generating things such as getters, setters, constructors, and other commonly used methods.</p>
+
+<h2 class="relative group">How I implemented it.
+    <div id="how-i-implemented-it" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#how-i-implemented-it" aria-label="Anchor">#</a>
+    </span>
+    
+</h2>
+<ul>
+<li>Created the initial project structure with the use of a domain model.</li>
+<li>Started designing the database. I did so by designing an ER diagram, to have a better visual understanding of the system architecture</li>
+<li>Worked with JPA and Hibernate</li>
+<li>Created the first entities and added relations between the classes</li>
+<li>Reduced boilerplate code in entity classes with the use of lombok to make getters, setters, constructors and more.</li>
+</ul>
 
 <h2 class="relative group">Next week
     <div id="next-week" class="anchor"></div>
@@ -568,7 +592,8 @@
     </span>
     
 </h2>
-<p>Next week I want to continue working on the API.</p>
+<p>Next week we will be introduced to data intergration and how to implement the use of api&rsquo;s in java.
+I will also be working on finishing setting up my DAO classes and create test to make sure they correctly can communicate wit the database.</p>
 
           
           
