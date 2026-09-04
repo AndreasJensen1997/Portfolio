@@ -30,6 +30,13 @@ I also worked with Lombok and learned how it can reduce boilerplate code by auto
 - Created the first entities and added relations between the classes
 - Reduced boilerplate code in entity classes with the use of lombok to make getters, setters, constructors and more. 
 
+## Noticeable changes 
+
+- Changed the datatype from "int" to "Integer" on my entities id attribute, in order for the "equals" and "hash" methods to be compatible with the id. 
+
+
+
+
 
 
 ## Next week
