@@ -7,3 +7,8 @@ title = 'Andreas Jensen'
 name = 'Projects'
 pageRef = '/projects'
 weight = 10
+
+[[menus.main]]
+name = 'About'
+pageRef = '/about'
+weight = 20

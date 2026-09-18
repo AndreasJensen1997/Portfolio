@@ -2,13 +2,25 @@ disabled = false
 locale = "en"
 label = "English"
 weight = 1
-title = "Blowfish"
+title = "Andreas Jensen"
 
 [params]
-  displayName = "EN"
-  isoCode = "en"
-  rtl = false
-  dateFormat = "2 January 2006"
+displayName = "EN"
+isoCode = "en"
+rtl = false
+dateFormat = "2 January 2006"
+description = "Portfolio of Andreas Jensen — full-stack developer."
+
+[params.author]
+name = "Andreas Jensen"
+image = "img/blowfish_logo.png"   # swap for your own photo/avatar
+headline = "Full-stack developer, building things one project at a time."
+bio = "I design and build web and mobile applications, currently exploring Java, React, and PostgreSQL."
+links = [
+    { github = "https://github.com/andreasjensen1997" },
+    { linkedin = "https://linkedin.com/in/your-handle" },
+    { email = "mailto:you@example.com" },
+]
   # logo = "img/logo.png"
   # secondaryLogo = "img/secondary-logo.png"
   # description = "My awesome website"

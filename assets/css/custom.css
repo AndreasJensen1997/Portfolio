@@ -32,26 +32,31 @@
    GLOBAL
    ========================================================= */
 
+/* =========================================================
+   BACKGROUND GRID — full-bleed, fixed to viewport
+   ========================================================= */
+
 html {
-    background: var(--portfolio-bg) !important;
+    position: relative;
+    min-height: 100%;
+}
+
+html::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+
+    background-color: var(--portfolio-bg);
+    background-image:
+            linear-gradient(rgba(16, 42, 67, 0.035) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(16, 42, 67, 0.035) 1px, transparent 1px);
+    background-size: 40px 40px;
 }
 
 body {
-    background-color: var(--portfolio-bg) !important;
+    background: transparent !important;
     color: var(--portfolio-text) !important;
-
-    background-image:
-            linear-gradient(
-                    rgba(16, 42, 67, 0.035) 1px,
-                    transparent 1px
-            ),
-            linear-gradient(
-                    90deg,
-                    rgba(16, 42, 67, 0.035) 1px,
-                    transparent 1px
-            );
-
-    background-size: 40px 40px;
 }
 
 
@@ -352,6 +357,260 @@ a:hover {
     border-color: var(--portfolio-blue-500);
     color: var(--portfolio-blue-700);
 }
+
+/* =========================================================
+   PROJECT SINGLE PAGE
+   ========================================================= */
+
+.project-single {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 5rem 1.5rem 8rem;
+}
+
+.project-back {
+    display: inline-block;
+    margin-bottom: 3rem;
+
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+
+    color: var(--portfolio-blue-700);
+    text-decoration: none;
+
+    transition: color 180ms ease, transform 180ms ease;
+}
+
+.project-back:hover {
+    color: var(--portfolio-red);
+    transform: translateX(-4px);
+}
+
+.project-label {
+    display: block;
+    margin-bottom: 1rem;
+
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+
+    color: var(--portfolio-blue-600);
+}
+
+.project-header {
+    margin-bottom: 3rem;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid var(--portfolio-border);
+}
+
+.project-header h1 {
+    margin: 0 0 1.25rem;
+
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    line-height: 0.98;
+    letter-spacing: -0.03em;
+}
+
+.project-header .project-description {
+    max-width: 650px;
+    margin-bottom: 1.5rem;
+
+    font-size: 1.1rem;
+    line-height: 1.7;
+}
+
+.project-header .project-card-meta {
+    margin-bottom: 0;
+}
+
+
+/* =========================================================
+   PROJECT CONTENT (markdown body)
+   ========================================================= */
+
+.project-content {
+    margin-bottom: 4rem;
+
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: var(--portfolio-text-secondary);
+}
+
+.project-content h2 {
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+    font-size: 1.6rem;
+}
+
+.project-content p {
+    margin-bottom: 1.25rem;
+}
+
+.project-content ul {
+    margin: 0 0 1.25rem 1.25rem;
+    list-style: disc;
+}
+
+.project-content li {
+    margin-bottom: 0.4rem;
+}
+
+
+/* =========================================================
+   CHANGELOG
+   ========================================================= */
+
+.project-changelog {
+    padding-top: 3rem;
+    border-top: 1px solid var(--portfolio-border);
+}
+
+.changelog-header {
+    margin-bottom: 3rem;
+}
+
+.changelog-header h2 {
+    margin: 0.25rem 0 0.75rem;
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+}
+
+.changelog-header p {
+    max-width: 500px;
+    line-height: 1.7;
+}
+
+.changelog-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.changelog-entry {
+    position: relative;
+    padding: 2rem 0 2rem 1.5rem;
+    border-left: 2px solid var(--portfolio-border);
+    border-bottom: 1px solid var(--portfolio-border);
+
+    transition: border-color 180ms ease;
+}
+
+.changelog-entry:last-child {
+    border-bottom: none;
+}
+
+.changelog-entry::before {
+    content: "";
+    position: absolute;
+    left: -6px;
+    top: 2.4rem;
+
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+
+    background: var(--portfolio-surface);
+    border: 2px solid var(--portfolio-blue-600);
+}
+
+.changelog-entry:hover {
+    border-left-color: var(--portfolio-blue-500);
+}
+
+.changelog-date {
+    margin-bottom: 0.5rem;
+
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+
+    color: var(--portfolio-blue-600);
+}
+
+.changelog-entry h3 {
+    margin: 0 0 0.5rem;
+    font-size: 1.4rem;
+}
+
+.changelog-entry h3 a {
+    color: var(--portfolio-blue-900);
+    text-decoration: none;
+}
+
+.changelog-entry p {
+    max-width: 550px;
+    margin-bottom: 0.75rem;
+    line-height: 1.6;
+}
+
+.changelog-entry > a:last-child {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+
+    color: var(--portfolio-blue-700);
+    text-decoration: none;
+
+    transition: color 180ms ease, transform 180ms ease;
+}
+
+.changelog-entry > a:last-child:hover {
+    color: var(--portfolio-red);
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 700px) {
+    .project-single {
+        padding: 3rem 1rem 5rem;
+    }
+
+    .project-header {
+        margin-bottom: 2rem;
+        padding-bottom: 2rem;
+    }
+}
+/* =========================================================
+   FIX: LOW-CONTRAST / "OPAQUE" LIST TEXT IN ARTICLE CONTENT
+   ========================================================= */
+
+.prose ul,
+.prose ol,
+.project-content ul,
+.project-content ol,
+article ul,
+article ol {
+    opacity: 1 !important;
+}
+
+.prose li,
+.project-content li,
+article li {
+    color: var(--portfolio-text) !important;
+    opacity: 1 !important;
+}
+
+.prose li::marker,
+.project-content li::marker,
+article li::marker {
+    color: var(--portfolio-blue-700) !important;
+    opacity: 1 !important;
+}
+
+/* Some themes dim list text via a CSS variable instead of opacity —
+   this resets the common Tailwind Typography variable too */
+.prose {
+    --tw-prose-bullets: var(--portfolio-blue-700) !important;
+    --tw-prose-body: var(--portfolio-text) !important;
+}
+
+
 
 
 /* =========================================================

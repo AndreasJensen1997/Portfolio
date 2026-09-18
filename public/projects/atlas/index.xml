@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Atlas on Blowfish</title>
+    <title>Atlas on Andreas Jensen</title>
     <link>http://localhost:1313/Portfolio/projects/atlas/</link>
-    <description>Recent content in Atlas on Blowfish</description>
+    <description>Recent content in Atlas on Andreas Jensen</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <copyright>© 2026 </copyright>
+    <copyright>© 2026 Andreas Jensen</copyright>
     <lastBuildDate></lastBuildDate><atom:link href="http://localhost:1313/Portfolio/projects/atlas/index.xml" rel="self" type="application/rss+xml" />
     
   </channel>

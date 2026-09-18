@@ -1,16 +1,16 @@
 ---
-title: "Weather App"
-description: "A weather application using the Open-Meteo API."
-date: 2026-09-01
-type: "project"
+title: "Weather app"
+description: "A weather application built using the Open-Meteo API."
+
+date: 2026-08-25
+
+category: "Full Stack"
+status: "In development"
+
+technologies:
+  - Java
+  - JPA
+  - Hibernate
+  - PostgreSQL
+  - React
 ---
-# Weather App
-
-A weather application that retrieves weather information from an external API.
-
-## Technologies
-
-- JavaScript
-- React
-- Open-Meteo API
-- CSS

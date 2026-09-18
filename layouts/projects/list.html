@@ -1,55 +1,41 @@
-<div class="projects-page">
+{{ define "main" }}
 
+{{ if .Parent.IsHome }}
+
+<div class="projects-page">
     <div class="projects-header">
-        <h1>Projects</h1>
-        <p>A collection of things I've built.</p>
+        <h1>{{ .Title }}</h1>
+        <p>{{ .Description }}</p>
     </div>
 
-    <!-- WRAPPER ADDED HERE -->
     <div class="projects-grid">
         {{ range .Pages }}
-
         <article class="project-card">
             <div class="project-card-content">
                 <div class="project-card-meta">
-                    {{ with .Params.category }}
-                    <span>{{ . }}</span>
-                    {{ end }}
-                    {{ with .Params.status }}
-                    <span>{{ . }}</span>
-                    {{ end }}
+                    {{ with .Params.category }}<span>{{ . }}</span>{{ end }}
+                    {{ with .Params.status }}<span>{{ . }}</span>{{ end }}
                 </div>
-
-                <h2>
-                    <a href="{{ .RelPermalink }}">
-                        {{ .Title }}
-                    </a>
-                </h2>
-
-                {{ with .Description }}
-                <p class="project-description">
-                    {{ . }}
-                </p>
-                {{ end }}
-
+                <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+                {{ with .Description }}<p class="project-description">{{ . }}</p>{{ end }}
                 {{ with .Params.technologies }}
                 <div class="project-technologies">
-                    {{ range . }}
-                    <span class="technology">
-                        {{ . }}
-                    </span>
-                    {{ end }}
+                    {{ range . }}<span class="technology">{{ . }}</span>{{ end }}
                 </div>
                 {{ end }}
             </div>
-
-            <a class="project-link" href="{{ .RelPermalink }}">
-                View project →
-            </a>
+            <a class="project-link" href="{{ .RelPermalink }}">View project →</a>
         </article>
-
         {{ end }}
     </div>
-    <!-- END OF WRAPPER -->
-
 </div>
+
+{{ else }}
+
+<article class="project-single">
+    {{ partial "project-detail.html" . }}
+</article>
+
+{{ end }}
+
+{{ end }}
