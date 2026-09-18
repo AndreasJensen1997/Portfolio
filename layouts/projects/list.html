@@ -1,27 +1,25 @@
-{{ $projectsCSS := resources.Get "css/projects.css" }}
+<div class="projects-page">
 
-{{ if $projectsCSS }}
-{{ $projectsCSS = $projectsCSS | resources.Minify }}
-<link rel="stylesheet" href="{{ $projectsCSS.RelPermalink }}">
-{{ end }}
+    <div class="projects-header">
+        <h1>Projects</h1>
+        <p>A collection of things I've built.</p>
+    </div>
 
-<section class="projects-page">
-
-    <header class="projects-header">
-        <h1>{{ .Title }}</h1>
-
-        {{ with .Description }}
-        <p>{{ . }}</p>
-        {{ end }}
-    </header>
-
+    <!-- WRAPPER ADDED HERE -->
     <div class="projects-grid">
-
         {{ range .Pages }}
 
         <article class="project-card">
+            <div class="project-card-content">
+                <div class="project-card-meta">
+                    {{ with .Params.category }}
+                    <span>{{ . }}</span>
+                    {{ end }}
+                    {{ with .Params.status }}
+                    <span>{{ . }}</span>
+                    {{ end }}
+                </div>
 
-            <div>
                 <h2>
                     <a href="{{ .RelPermalink }}">
                         {{ .Title }}
@@ -29,18 +27,29 @@
                 </h2>
 
                 {{ with .Description }}
-                <p>{{ . }}</p>
+                <p class="project-description">
+                    {{ . }}
+                </p>
+                {{ end }}
+
+                {{ with .Params.technologies }}
+                <div class="project-technologies">
+                    {{ range . }}
+                    <span class="technology">
+                        {{ . }}
+                    </span>
+                    {{ end }}
+                </div>
                 {{ end }}
             </div>
 
             <a class="project-link" href="{{ .RelPermalink }}">
                 View project →
             </a>
-
         </article>
 
         {{ end }}
-
     </div>
+    <!-- END OF WRAPPER -->
 
-</section>
+</div>

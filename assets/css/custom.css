@@ -4,7 +4,12 @@
    ========================================================= */
 
 :root {
-    --portfolio-bg: #ffffff;
+
+    /* =====================================================
+       COLORS
+       ===================================================== */
+
+    --portfolio-bg: #f5f7f8;
     --portfolio-bg-soft: #edf1f4;
     --portfolio-surface: #ffffff;
 
@@ -18,12 +23,13 @@
 
     --portfolio-text: #17212b;
     --portfolio-text-secondary: #52606d;
+
     --portfolio-border: #d7dee4;
 }
 
 
 /* =========================================================
-   PAGE
+   GLOBAL
    ========================================================= */
 
 html {
@@ -31,13 +37,26 @@ html {
 }
 
 body {
-    background: var(--portfolio-bg) !important;
+    background-color: var(--portfolio-bg) !important;
     color: var(--portfolio-text) !important;
+
+    background-image:
+            linear-gradient(
+                    rgba(16, 42, 67, 0.035) 1px,
+                    transparent 1px
+            ),
+            linear-gradient(
+                    90deg,
+                    rgba(16, 42, 67, 0.035) 1px,
+                    transparent 1px
+            );
+
+    background-size: 40px 40px;
 }
 
 
 /* =========================================================
-   TEXT
+   TYPOGRAPHY
    ========================================================= */
 
 h1,
@@ -47,6 +66,9 @@ h4,
 h5,
 h6 {
     color: var(--portfolio-blue-900) !important;
+
+    letter-spacing: -0.02em;
+    line-height: 1.15;
 }
 
 p {
@@ -60,6 +82,10 @@ p {
 
 a {
     color: var(--portfolio-blue-700);
+
+    transition:
+            color 180ms ease,
+            opacity 180ms ease;
 }
 
 a:hover {
@@ -76,3 +102,279 @@ a:hover {
     color: white;
 }
 
+/* =========================================================
+   PROJECTS
+   ========================================================= */
+
+.projects-page {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 5rem 1.5rem 8rem;
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.projects-header {
+    margin-bottom: 5rem;
+    border-bottom: 1px solid var(--portfolio-border);
+    padding-bottom: 2rem;
+}
+
+.projects-header::before {
+    content: "02 / WORK";
+    display: block;
+
+    margin-bottom: 1rem;
+
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+
+    color: var(--portfolio-blue-600);
+}
+
+.projects-header h1 {
+    margin: 0;
+
+    font-size: clamp(3rem, 7vw, 6rem);
+    line-height: 0.95;
+    letter-spacing: -0.04em;
+}
+
+.projects-header p {
+    max-width: 600px;
+    margin-top: 1.5rem;
+
+    font-size: 1.05rem;
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   PROJECT GRID
+   ========================================================= */
+
+.projects-grid {
+    display: grid;
+
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 1px;
+
+    background: var(--portfolio-border);
+
+    border: 1px solid var(--portfolio-border);
+}
+
+
+/* =========================================================
+   PROJECT CARD
+   ========================================================= */
+
+.project-card {
+    position: relative;
+
+    min-height: 320px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    padding: 2.5rem;
+
+    background: var(--portfolio-bg);
+
+    transition:
+            background 250ms ease,
+            transform 250ms ease;
+}
+
+
+/* Small project number */
+
+.project-card::before {
+    content: counter(project);
+
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+
+    color: var(--portfolio-text-secondary);
+}
+
+
+/* Automatic numbering */
+
+.projects-grid {
+    counter-reset: project;
+}
+
+.project-card {
+    counter-increment: project;
+}
+
+
+/* Hover */
+
+.project-card:hover {
+    background: var(--portfolio-surface);
+    transform: translateY(-3px);
+}
+
+
+/* =========================================================
+   PROJECT TITLE
+   ========================================================= */
+
+.project-card h2 {
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    line-height: 1;
+
+    letter-spacing: -0.035em;
+}
+
+.project-card h2 a {
+    color: var(--portfolio-blue-900);
+    text-decoration: none;
+}
+
+
+/* =========================================================
+   DESCRIPTION
+   ========================================================= */
+
+.project-card p {
+    max-width: 450px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   PROJECT LINK
+   ========================================================= */
+
+.project-link {
+    display: inline-flex;
+    align-items: center;
+
+    width: fit-content;
+
+    margin-top: 2rem;
+
+    font-size: 0.75rem;
+    font-weight: 600;
+
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+
+    color: var(--portfolio-blue-700);
+
+    text-decoration: none;
+
+    transition:
+            color 180ms ease,
+            transform 180ms ease;
+}
+
+.project-link:hover {
+    color: var(--portfolio-red);
+    transform: translateX(5px);
+}
+/* =========================================================
+   PROJECT META
+   ========================================================= */
+
+.project-card-meta {
+    display: flex;
+    gap: 1rem;
+
+    margin-bottom: 1.5rem;
+
+    font-size: 0.65rem;
+    font-weight: 600;
+
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+
+    color: var(--portfolio-blue-600);
+}
+
+.project-card-meta span + span::before {
+    content: "/";
+    margin-right: 1rem;
+
+    color: var(--portfolio-border);
+}
+
+
+/* =========================================================
+   TECHNOLOGIES
+   ========================================================= */
+
+.project-technologies {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+
+    margin-top: 2rem;
+}
+
+.technology {
+    padding: 0.4rem 0.65rem;
+
+    border: 1px solid var(--portfolio-border);
+
+    font-size: 0.7rem;
+    letter-spacing: 0.04em;
+
+    color: var(--portfolio-text-secondary);
+
+    background: transparent;
+
+    transition:
+            border-color 180ms ease,
+            color 180ms ease,
+            background 180ms ease;
+}
+
+.project-card:hover .technology {
+    border-color: var(--portfolio-blue-500);
+    color: var(--portfolio-blue-700);
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+    .projects-page {
+        padding: 3rem 1rem 5rem;
+    }
+
+    .projects-header {
+        margin-bottom: 3rem;
+    }
+
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .project-card {
+        min-height: 280px;
+        padding: 2rem;
+    }
+
+}

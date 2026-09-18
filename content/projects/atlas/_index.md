@@ -1,15 +1,16 @@
 ---
 title: "Atlas"
-description: "A memory and life documentation application."
-date: 2026-09-01
-type: "project"
+description: "A personal time capsule for documenting and preserving your life story."
+
+date: 2026-08-25
+
+category: "Full Stack"
+status: "In development"
+
+technologies:
+  - Java
+  - JPA
+  - Hibernate
+  - PostgreSQL
+  - React
 ---
-
-Atlas is a web application for documenting a person's life.
-
-## Technologies
-
-- Java
-- JPA / Hibernate
-- PostgreSQL
-- React
