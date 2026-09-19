@@ -260,7 +260,7 @@
     
     
     "mainEntityOfPage": "http://localhost:1313/Portfolio/projects/atlas/",
-    "wordCount":  0 
+    "wordCount":  545 
   }]
   </script>
 
@@ -330,12 +330,30 @@
       href="/Portfolio/projects/"
       
       class="flex items-center bf-icon-color-hover"
-      aria-label="projects"
+      aria-label="Projects"
       title="Projects">
       
       
         <span class="text-sm font-medium break-normal">
-          projects
+          Projects
+        </span>
+      
+    </a>
+  
+
+    
+      
+  
+    <a
+      href="/Portfolio/about/"
+      
+      class="flex items-center bf-icon-color-hover"
+      aria-label="About"
+      title="About">
+      
+      
+        <span class="text-sm font-medium break-normal">
+          About
         </span>
       
     </a>
@@ -469,12 +487,31 @@
       <div class="flex items-center gap-4">
         <a
           href="/Portfolio/projects/"
-          aria-label="projects"
+          aria-label="Projects"
           
           class="flex grow items-center gap-4 group bf-icon-color-hover text-neutral-700 dark:text-neutral-200">
           
           <span title="Projects" class="text-2xl font-bold tracking-tight">
-            projects
+            Projects
+          </span>
+        </a>
+        
+      </div>
+
+      
+    </div>
+  
+    
+    <div class="px-2">
+      <div class="flex items-center gap-4">
+        <a
+          href="/Portfolio/about/"
+          aria-label="About"
+          
+          class="flex grow items-center gap-4 group bf-icon-color-hover text-neutral-700 dark:text-neutral-200">
+          
+          <span title="About" class="text-2xl font-bold tracking-tight">
+            About
           </span>
         </a>
         
@@ -539,6 +576,231 @@
 
 <div class="project-content">
     
+<h2 class="relative group">Project Overview
+    <div id="project-overview" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#project-overview" aria-label="Anchor">#</a>
+    </span>
+    
+</h2>
+<p><strong>Atlas</strong> is a personal journal application designed to help users document, organize, and preserve the important parts
+of their lives.</p>
+<p>The idea is to create a private, personal space where memories, people, places, stories, and meaningful objects can be
+collected and connected — almost like a personal Wikipedia for your own life.</p>
+<p>The project is being developed as a full-stack application, with a <strong>Java backend API</strong> serving as the foundation and a
+<strong>React frontend</strong> providing the user interface.</p>
+<hr>
+
+<h2 class="relative group">Project Information
+    <div id="project-information" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#project-information" aria-label="Anchor">#</a>
+    </span>
+    
+</h2>
+<p><strong>Developer</strong> -  Andreas Jensen          <br>
+<strong>Education</strong> -  Datamatiker — 3rd semester
+<strong>School</strong> -    EK                      <br>
+<strong>Year</strong> -      2026                    <br>
+<strong>Status</strong> -    In development          <br>
+<strong>Type</strong> -      Full Stack Application</p>
+
+<h2 class="relative group">Goal
+    <div id="goal" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#goal" aria-label="Anchor">#</a>
+    </span>
+    
+</h2>
+<p>The goal of the project is to develop a production-oriented backend that demonstrates the principles and technologies
+covered throughout the semester.</p>
+<p>The backend will include:</p>
+<ul>
+<li>User authentication and validation</li>
+<li>Role-based access control</li>
+<li>Secure user-specific data</li>
+<li>CRUD functionality</li>
+<li>Business rules and data validation</li>
+<li>JPA and Hibernate persistence</li>
+<li>PostgreSQL database integration</li>
+<li>REST API endpoints</li>
+<li>DTOs for communication between the backend and frontend</li>
+<li>External API integrations</li>
+<li>A structure that can be expanded with additional functionality in the future</li>
+</ul>
+<hr>
+
+<h2 class="relative group">The Idea Behind Atlas
+    <div id="the-idea-behind-atlas" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#the-idea-behind-atlas" aria-label="Anchor">#</a>
+    </span>
+    
+</h2>
+<p>Atlas is built around the idea of <strong>preserving your personal story</strong>.</p>
+<p>Instead of treating memories as isolated diary entries, the application allows different parts of a person&rsquo;s life to be
+connected.</p>
+<p>For example, a memory about a trip to Italy could be connected to:</p>
+<ul>
+<li>The people who were there</li>
+<li>The places that were visited</li>
+<li>Photos and other artifacts</li>
+<li>Related memories</li>
+<li>A larger chapter of the user&rsquo;s life</li>
+</ul>
+<p>This creates a more interconnected way of documenting life rather than simply writing individual journal entries.</p>
+<hr>
+
+<h2 class="relative group">Architecture
+    <div id="architecture" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#architecture" aria-label="Anchor">#</a>
+    </span>
+    
+</h2>
+<p>The project is divided into two main parts:</p>
+
+<h3 class="relative group">Backend
+    <div id="backend" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#backend" aria-label="Anchor">#</a>
+    </span>
+    
+</h3>
+<p>The backend is being developed in <strong>Java</strong> and provides the API and business logic for Atlas.</p>
+<p>The current backend stack includes:</p>
+<ul>
+<li>Java</li>
+<li>JPA</li>
+<li>Hibernate</li>
+<li>PostgreSQL</li>
+</ul>
+<p>The backend is responsible for handling persistence, relationships between entities, validation, authentication, and
+communication with the frontend.</p>
+
+<h3 class="relative group">Frontend
+    <div id="frontend" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#frontend" aria-label="Anchor">#</a>
+    </span>
+    
+</h3>
+<p>The frontend is being developed with <strong>React</strong>.</p>
+<p>It will provide the visual interface through which users can create, view, edit, and organize their personal content.</p>
+<p>The frontend will communicate with the Java backend through the REST API.</p>
+<hr>
+
+<h2 class="relative group">Core Concepts
+    <div id="core-concepts" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#core-concepts" aria-label="Anchor">#</a>
+    </span>
+    
+</h2>
+<p>Atlas is built around several central concepts:</p>
+<p><strong>Chapters</strong>
+Larger periods or phases of a person&rsquo;s life.</p>
+<p><strong>Memories</strong>
+Individual moments or experiences that the user wants to preserve.</p>
+<p><strong>People</strong>
+People who are connected to memories, chapters, or other parts of the user&rsquo;s story.</p>
+<p><strong>Places</strong>
+Locations that have significance to the user&rsquo;s life.</p>
+<p><strong>Artifacts</strong>
+Objects or pieces of media that carry personal meaning, such as albums, films, or other meaningful objects.</p>
+<p><strong>Entity Lists</strong>
+Custom collections that allow users to organize related items, such as favourite movies, quotes, books, or memories.</p>
+<hr>
+
+<h2 class="relative group">Development
+    <div id="development" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#development" aria-label="Anchor">#</a>
+    </span>
+    
+</h2>
+<p>Atlas is currently <strong>in development as part of my 3rd-semester Datamatiker project at EK</strong>.</p>
+<p>The project is being developed incrementally, beginning with the backend architecture, database model, and persistence
+layer before connecting the API to the React frontend.</p>
+<p>The long-term goal is to create a polished full-stack application that demonstrates both the technical concepts learned
+during the semester and a practical, user-focused product.</p>
+<hr>
+
+<h2 class="relative group">Technologies
+    <div id="technologies" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#technologies" aria-label="Anchor">#</a>
+    </span>
+    
+</h2>
+
+<h3 class="relative group">Backend
+    <div id="backend-1" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#backend-1" aria-label="Anchor">#</a>
+    </span>
+    
+</h3>
+<ul>
+<li>Java</li>
+<li>JPA</li>
+<li>Hibernate</li>
+<li>PostgreSQL</li>
+</ul>
+
+<h3 class="relative group">Frontend
+    <div id="frontend-1" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#frontend-1" aria-label="Anchor">#</a>
+    </span>
+    
+</h3>
+<ul>
+<li>React</li>
+<li>JavaScript</li>
+<li>HTML</li>
+<li>CSS</li>
+</ul>
+
+<h3 class="relative group">Development
+    <div id="development-1" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#development-1" aria-label="Anchor">#</a>
+    </span>
+    
+</h3>
+<ul>
+<li>IntelliJ IDEA</li>
+<li>pgAdmin</li>
+<li>Git / GitHub</li>
+</ul>
+
 </div>
 
 
@@ -551,6 +813,13 @@
     </div>
 
     <div class="changelog-list">
+        
+        <article class="changelog-entry">
+            <div class="changelog-date">18 September 2026</div>
+            <h3><a href="/Portfolio/projects/atlas/changelog/week-03/">Week 3 — Database &amp; API</a></h3>
+            <p>Working on the database structure and beginning the API.</p>
+            <a href="/Portfolio/projects/atlas/changelog/week-03/">Read entry →</a>
+        </article>
         
         <article class="changelog-entry">
             <div class="changelog-date">01 September 2026</div>
