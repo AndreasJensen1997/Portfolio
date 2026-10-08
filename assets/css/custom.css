@@ -9,24 +9,23 @@
        COLORS
        ===================================================== */
 
-    --portfolio-bg: #f5f7f8;
-    --portfolio-bg-soft: #edf1f4;
-    --portfolio-surface: #ffffff;
+    --portfolio-bg: #18181b;
+    --portfolio-bg-soft: #1f1f23;
+    --portfolio-surface: #232327;
 
-    --portfolio-blue-900: #102a43;
-    --portfolio-blue-800: #163a5f;
-    --portfolio-blue-700: #1d4e73;
-    --portfolio-blue-600: #286789;
-    --portfolio-blue-500: #3b7ea1;
+    --portfolio-blue-900: #f4f4f5;
+    --portfolio-blue-800: #e4e4e7;
+    --portfolio-blue-700: #ff4f9a;
+    --portfolio-blue-600: #ff7ab3;
+    --portfolio-blue-500: #ffa6c9;
 
-    --portfolio-red: #c84b4b;
+    --portfolio-red: #ff2d78;
 
-    --portfolio-text: #17212b;
-    --portfolio-text-secondary: #52606d;
+    --portfolio-text: #f4f4f5;
+    --portfolio-text-secondary: #a1a1aa;
 
-    --portfolio-border: #d7dee4;
+    --portfolio-border: #2f2f35;
 }
-
 
 /* =========================================================
    GLOBAL
@@ -48,10 +47,6 @@ html::before {
     z-index: -1;
 
     background-color: var(--portfolio-bg);
-    background-image:
-            linear-gradient(rgba(16, 42, 67, 0.035) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(16, 42, 67, 0.035) 1px, transparent 1px);
-    background-size: 40px 40px;
 }
 
 body {
@@ -103,8 +98,8 @@ a:hover {
    ========================================================= */
 
 ::selection {
-    background: var(--portfolio-blue-800);
-    color: white;
+    background: var(--portfolio-blue-700);
+    color: var(--portfolio-bg);
 }
 
 /* =========================================================
@@ -636,4 +631,34 @@ article li::marker {
         padding: 2rem;
     }
 
+}
+
+
+
+
+
+
+#blob-body{
+    fill: #ff2d78;
+}
+
+
+
+#blob-body,
+#blob-eyes {
+    transition: transform 120ms ease-out;
+}
+
+#blob-eyes-blink {
+    transform-box: fill-box;
+    transform-origin: center;
+}
+
+#blob-eyes-blink.is-blinking {
+    animation: blob-blink 180ms ease-in-out;
+}
+
+@keyframes blob-blink {
+    0%, 100% { transform: scaleY(1); }
+    50% { transform: scaleY(0.08); }
 }

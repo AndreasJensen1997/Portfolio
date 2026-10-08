@@ -7,12 +7,52 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>© 2026 Andreas Jensen</copyright>
-    <lastBuildDate>Fri, 18 Sep 2026 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/Portfolio/projects/atlas/changelog/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 05 Oct 2026 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/Portfolio/projects/atlas/changelog/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
-      <title>Week 3 — Database &amp; API</title>
+      <title>Week 7 — Rest assured</title>
+      <link>http://localhost:1313/Portfolio/projects/atlas/changelog/week-07/</link>
+      <pubDate>Mon, 05 Oct 2026 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/Portfolio/projects/atlas/changelog/week-07/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>Week 6 — Rest API</title>
+      <link>http://localhost:1313/Portfolio/projects/atlas/changelog/week-06/</link>
+      <pubDate>Mon, 28 Sep 2026 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/Portfolio/projects/atlas/changelog/week-06/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>Week 5 — Concurrency</title>
+      <link>http://localhost:1313/Portfolio/projects/atlas/changelog/week-05/</link>
+      <pubDate>Mon, 21 Sep 2026 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/Portfolio/projects/atlas/changelog/week-05/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>Week 4 — API endpoints &amp; privacy</title>
+      <link>http://localhost:1313/Portfolio/projects/atlas/changelog/week-04/</link>
+      <pubDate>Tue, 15 Sep 2026 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/Portfolio/projects/atlas/changelog/week-04/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>Week 3 — Testing the DAO Layer</title>
       <link>http://localhost:1313/Portfolio/projects/atlas/changelog/week-03/</link>
-      <pubDate>Fri, 18 Sep 2026 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 08 Sep 2026 00:00:00 +0000</pubDate>
       
       <guid>http://localhost:1313/Portfolio/projects/atlas/changelog/week-03/</guid>
       <description></description>
@@ -20,7 +60,7 @@
     </item>
     
     <item>
-      <title>Week 2 — Database &amp; API</title>
+      <title>Week 2 — Database &amp; Relations</title>
       <link>http://localhost:1313/Portfolio/projects/atlas/changelog/week-02/</link>
       <pubDate>Tue, 01 Sep 2026 00:00:00 +0000</pubDate>
       

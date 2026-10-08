@@ -13,7 +13,7 @@ description = "Portfolio of Andreas Jensen — full-stack developer."
 
 [params.author]
 name = "Andreas Jensen"
-image = "img/blowfish_logo.png"   # swap for your own photo/avatar
+image = "img/blobatar.svg"   # swap for your own photo/avatar
 headline = "Full-stack developer, building things one project at a time."
 bio = "I design and build web and mobile applications, currently exploring Java, React, and PostgreSQL."
 links = [
