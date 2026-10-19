@@ -2,48 +2,34 @@
 
 title: "Week 7 — Rest assured"
 date: 2026-10-05
-description: "Created rest assured test for controller classes"
+description: "Testing all endpoints with REST Assured, describing behaviour in Gherkin, and what the tests revealed about security."
 type: "changelog"
 -----------------
 
-This week the main focus of school was integration of an api in a java project. More specifically, requesting a prompt from google gemini and extracting the data from the prompt. 
-Because I already had a feature planned where a user could generate a prompt, containing an idea of something to write about i thought about how i could implement this in atlas.
-
+This week was about testing the API end to end, and the tests found more than I expected.
 
 ## What I worked on
 
+- **REST Assured tests for every controller.** Each test class starts the real Javalin server and sends real HTTP requests to a PostgreSQL database in a Testcontainers Docker container. A `TestPopulator` seeds the data and a cleanup method resets it between tests.
+- **Gherkin.** I wrote a feature file with scenarios in the form *Given a valid token, when I send POST /chapters, then I get 201.*
+- **Notifications and devlogs**, built as a complete flow with tests.
+- **Mentions and ownership.** I connected each mention to its user and added checks so users cannot read other users' mentions.
+- **Configuration.** I moved the JWT secret into `config.properties`, and made the database reset on start only when the app is not deployed.
 
+## Reflections
 
-### Integrating gemini API
-When i first thought of the "prompt generator" feature, my plan was to have a list of short hard coded prompts in the database, a user could get at random. After learning how to use the gemini API in school, i decided to intergrate that in the feature. 
-So instead of a list of prompts typed manually in the database, I could instead utilize gemini to create unique prompts every time a user asks for one. 
+**Tests as a design tool.** While writing the mention tests I asked what happens if I link to a page that belongs to someone else. The answer was that it worked, which meant a user could attach links to other people's pages. That is a security hole, not a small bug. The fix was to check in the service that both pages exist and belong to the logged-in user.
 
-This decision automates the feature in atlas, and in concept, would never need to be "updated" by adding new prompts once the user had seen them all, making it fully dynamic.
-I used the project we made together in school, and when i could sucessully extract a prompt, i made the proper mapper, DTO and DAO classes in order to show the prompt, and for the user to save a prompt they like.  
+**404 instead of 403.** When a user asks for another user's page, I answer `404 Not Found`. A `403 Forbidden` would confirm that the page exists. Hiding that is a small privacy gain for no extra code.
 
-### Privacy
-A big part of atlas is privacy. I want to ensure that a user can choose whether or not they want their created page to be private or public. Therefore i added an enum to my project called visibility. It contains "PUBLIC" and "PRIVATE". 
-The reason i choose an enum over a boolean, is that i originally wanted the user to between private, public or a custom setting. The idea with the custom setting was that the user could pick from a list of friends, who they wanted a page to be public with. I quickly decided though, that it was a bit out of scope, and i wanted to focus on basic privacy functionality first. 
-If i decide to add it in the future, the enum makes it easy to add a variant of visibility, which i would not be able to, if i had chosen to use a boolean.
+**Gherkin versus REST Assured.** Gherkin describes behaviour in plain language, and REST Assured checks it in code. I did not set up Cucumber, so my feature file is a specification, and each scenario matches one REST Assured test. For a project this size that was enough, and it kept the tests close to what the API promises.
 
+**A secret in the source code.** I had written the JWT secret directly in the code, and I noticed it only when I looked at the project the way someone else would. Secrets belong in configuration that is not committed.
 
-### Generic DAO & Custom Methods
+## Challenges
 
-
-
-## What I learned
-
-### Testing the Persistence Layer
-
-### Creating Reusable Test Data
-
-### Testing Entity-Specific Behaviour
-
-
-## Challenges & Problems
-
-
----
+All the endpoint tests share one database and one port, so they have to clean up after themselves, or a failing test can break the next one. Getting the setup and cleanup right took more time than writing the tests.
 
 ## Next week
 
+Roles and admin-only routes, and hardening what the tests showed me.

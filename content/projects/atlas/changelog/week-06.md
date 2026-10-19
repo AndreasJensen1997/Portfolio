@@ -2,48 +2,34 @@
 
 title: "Week 6 — Rest API"
 date: 2026-09-28
-description: "Created endpoints for Atlas api"
+description: "Building the REST layer: JWT, a generic controller and one resource after another."
 type: "changelog"
 -----------------
 
-This week the main focus of school was integration of an api in a java project. More specifically, requesting a prompt from google gemini and extracting the data from the prompt. 
-Because I already had a feature planned where a user could generate a prompt, containing an idea of something to write about i thought about how i could implement this in atlas.
-
+This was the most productive week so far. The API went from one working resource to almost all of them.
 
 ## What I worked on
 
+- **JWT.** A generator and a verifier, so every request except login and registration needs a token.
+- **`EndpointGroup`.** Each controller registers its own routes, instead of `main` knowing every path.
+- **A full flow for chapters:** DTOs, mapper, service and controller, tested with HTTP files.
+- **`AbstractController`.** One generic controller with create, get by id, list, update, delete and random. After chapters, memories, stories, artifacts, people, places, fragments, time capsules and lists each needed little more than DTOs, a mapper, a service and a small subclass.
+- **Dependency injection** in `ApplicationConfig`, which grew with every resource.
 
+## Reflections
 
-### Integrating gemini API
-When i first thought of the "prompt generator" feature, my plan was to have a list of short hard coded prompts in the database, a user could get at random. After learning how to use the gemini API in school, i decided to intergrate that in the feature. 
-So instead of a list of prompts typed manually in the database, I could instead utilize gemini to create unique prompts every time a user asks for one. 
+**The signal to abstract.** I only wrote the generic controller after I had written the chapter flow by hand and could see which parts repeated. Doing it earlier would have been guessing. The result is that adding a new resource is now fast and consistent.
 
-This decision automates the feature in atlas, and in concept, would never need to be "updated" by adding new prompts once the user had seen them all, making it fully dynamic.
-I used the project we made together in school, and when i could sucessully extract a prompt, i made the proper mapper, DTO and DAO classes in order to show the prompt, and for the user to save a prompt they like.  
+**An abstraction has a cost.** Not everything fits. Authentication, users and mentions do different things, so they do not extend `AbstractController`. I decided it is better to let a few controllers stand alone than to bend the base class until it fits everything.
 
-### Privacy
-A big part of atlas is privacy. I want to ensure that a user can choose whether or not they want their created page to be private or public. Therefore i added an enum to my project called visibility. It contains "PUBLIC" and "PRIVATE". 
-The reason i choose an enum over a boolean, is that i originally wanted the user to between private, public or a custom setting. The idea with the custom setting was that the user could pick from a list of friends, who they wanted a page to be public with. I quickly decided though, that it was a bit out of scope, and i wanted to focus on basic privacy functionality first. 
-If i decide to add it in the future, the enum makes it easy to add a variant of visibility, which i would not be able to, if i had chosen to use a boolean.
+**The user id comes from the token, never from the request.** A client should not be able to say "I am user 5". The token proves who they are, and the service uses that id for every query. That decision is what makes it possible to keep every user's data private.
 
+**Small bugs showed the value of interfaces.** The mappers for people and places had a mistake that I found only because I made them implement a shared `IMapper` interface. The interface forced the same signature everywhere.
 
-### Generic DAO & Custom Methods
+## Challenges
 
-
-
-## What I learned
-
-### Testing the Persistence Layer
-
-### Creating Reusable Test Data
-
-### Testing Entity-Specific Behaviour
-
-
-## Challenges & Problems
-
-
----
+`ApplicationConfig` is getting long. Every new resource needs its own block of DAO, mapper, service and controller. It works and it is easy to follow, but I can see it becoming hard to read if it keeps growing.
 
 ## Next week
 
+Test every endpoint properly with REST Assured instead of clicking through HTTP files, and describe the behaviour in Gherkin.

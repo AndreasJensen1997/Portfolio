@@ -260,7 +260,7 @@
     
     
     "mainEntityOfPage": "http://localhost:1313/Portfolio/projects/atlas/changelog/week-01/",
-    "wordCount":  165 
+    "wordCount":  350 
   }]
   </script>
 
@@ -615,7 +615,7 @@
   <div class="flex flex-row flex-wrap items-center">
     
     
-      <time datetime="2026-08-25T00:00:00&#43;00:00">25 August 2026</time><span class="px-2 text-primary-500">&middot;</span><span>165 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">1 min</span>
+      <time datetime="2026-08-25T00:00:00&#43;00:00">25 August 2026</time><span class="px-2 text-primary-500">&middot;</span><span>350 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">2 mins</span>
     
 
     
@@ -754,8 +754,20 @@
         
 
         <div class="article-content max-w-prose mb-20">
-          <p>This week I started working on Atlas.</p>
+          <p>This week I started <em>Atlas</em>: a personal, private encyclopedia of your own life. You write pages (memories, chapters, stories, people, places, objects), highlight text in a page and link it to another page, and every page can then show what links to it.</p>
 <p>The main goal was to establish the basic architecture of the application and create a solid foundation for the development process.</p>
+
+<h2 class="relative group">What I worked on
+    <div id="what-i-worked-on" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#what-i-worked-on" aria-label="Anchor">#</a>
+    </span>
+    
+</h2>
+<p>I set up the project from the template and removed the classes I did not need. The first student-style DAO became a <code>UserDAO</code>, and I created the first entities (<code>AppUser</code> and <code>Chapter</code>) and registered them in an <code>EntityRegistry</code>.</p>
+<p>I also wrote my first DAO through an <code>IDAO</code> interface with basic CRUD, and tried it out directly in <code>main</code> before building anything around it.</p>
 
 <h2 class="relative group">What I learned
     <div id="what-i-learned" class="anchor"></div>
@@ -776,6 +788,17 @@
     </span>
     
 </h3>
+
+<h2 class="relative group">Reflections
+    <div id="reflections" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#reflections" aria-label="Anchor">#</a>
+    </span>
+    
+</h2>
+<p><strong>Why start with entities and a DAO?</strong> Everything else in the project depends on the data model. If a relationship is wrong here, it is wrong in the API, the tests and the frontend too. Starting at the bottom felt slow, but I think it was cheaper than fixing the structure later.</p>
 
 <h2 class="relative group">How I implemented it.
     <div id="how-i-implemented-it" class="anchor"></div>
@@ -817,6 +840,7 @@
 </h2>
 <p>Next week we will be introduced to data intergration and how to implement the use of api&rsquo;s in java.
 I will also be working on finishing setting up my DAO classes and create test to make sure they correctly can communicate wit the database.</p>
+<p>Create all the entities, connect them with JPA relationships, and start on a generic DAO so I do not write the same CRUD code over and over.</p>
 
           
           

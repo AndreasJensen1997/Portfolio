@@ -1,49 +1,35 @@
 ---
 
-title: "Week 8 — Dev ops"
-date: 2026-10-12
-description: "Deployment"
+title: "Week 8 — Security & Hardening"
+date: 2026-10-06
+description: "Roles, admin-only routes and a round of fixes after looking at the API with a critical eye"
 type: "changelog"
 -----------------
 
-This week the main focus of school was integration of an api in a java project. More specifically, requesting a prompt from google gemini and extracting the data from the prompt. 
-Because I already had a feature planned where a user could generate a prompt, containing an idea of something to write about i thought about how i could implement this in atlas.
-
+After testing the API in week 7, I spent this week making it safer and tidier. I wanted to look at Atlas the way someone who did not build it would.
 
 ## What I worked on
 
+- **Roles.** `Role` now implements Javalin's `RouteRole`, so an admin-only route is marked on the route itself and checked in one place. The token only holds the user id, and I read the role from the database on every request.
+- **An AI rate limit.** Each user can ask Gemini for 10 prompts per hour, and the answer length is capped, so one user cannot run up the bill.
+- **Long text.** Content columns are now `TEXT`, because a normal string column stops at 255 characters, which is too short for a memory.
+- **Time capsules.** I removed the stored `isLocked` field and calculate the lock status from the unlock date instead.
+- **Titles.** I removed the rule that page titles must be unique.
 
+## Reflections
 
-### Integrating gemini API
-When i first thought of the "prompt generator" feature, my plan was to have a list of short hard coded prompts in the database, a user could get at random. After learning how to use the gemini API in school, i decided to intergrate that in the feature. 
-So instead of a list of prompts typed manually in the database, I could instead utilize gemini to create unique prompts every time a user asks for one. 
+**Endpoint roles.** Putting `Role.ADMIN` on the route means the rule is visible next to the endpoint, and nobody has to remember to add a check in a controller. I think this is much harder to forget than an `if` statement inside each method.
 
-This decision automates the feature in atlas, and in concept, would never need to be "updated" by adding new prompts once the user had seen them all, making it fully dynamic.
-I used the project we made together in school, and when i could sucessully extract a prompt, i made the proper mapper, DTO and DAO classes in order to show the prompt, and for the user to save a prompt they like.  
+**JWT role not stored in token.** If it were, a user who loses admin rights would keep them until the token expires. Reading it from the database costs one extra query per request, but a role change takes effect at once. For this project, that trade-off is worth it.
 
-### Privacy
-A big part of atlas is privacy. I want to ensure that a user can choose whether or not they want their created page to be private or public. Therefore i added an enum to my project called visibility. It contains "PUBLIC" and "PRIVATE". 
-The reason i choose an enum over a boolean, is that i originally wanted the user to between private, public or a custom setting. The idea with the custom setting was that the user could pick from a list of friends, who they wanted a page to be public with. I quickly decided though, that it was a bit out of scope, and i wanted to focus on basic privacy functionality first. 
-If i decide to add it in the future, the enum makes it easy to add a variant of visibility, which i would not be able to, if i had chosen to use a boolean.
+**Timecapsules locked state.** A stored `isLocked` flag can disagree with the unlock date, for example when nobody updates it. Calculating it from the date means it can never be wrong.
 
+**A decision I changed.** I first made titles unique to avoid confusion when linking pages. But links use ids, so duplicates are not a technical problem. The confusion is about how a list looks, and the frontend can solve that by showing the page type and subtitle. Removing the check also removed the same code from nine services, which made the project simpler.
 
-### Generic DAO & Custom Methods
+## Challenges
 
-
-
-## What I learned
-
-### Testing the Persistence Layer
-
-### Creating Reusable Test Data
-
-### Testing Entity-Specific Behaviour
-
-
-## Challenges & Problems
-
-
----
+Nobody can make themselves an admin through the API, on purpose, so I promote my own user directly in the database. Locally the database is also recreated on every start, so I have to do it again each time.
 
 ## Next week
 
+Concurrency in practice: a scheduled job for time capsules, a thread pool for notifications, and a WebSocket to push them live.

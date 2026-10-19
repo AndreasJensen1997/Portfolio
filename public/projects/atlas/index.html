@@ -260,7 +260,7 @@
     
     
     "mainEntityOfPage": "http://localhost:1313/Portfolio/projects/atlas/",
-    "wordCount":  545 
+    "wordCount":  893 
   }]
   </script>
 
@@ -568,14 +568,15 @@
     </div>
 
     
-    <div class="project-technologies">
-        <span class="technology">Java</span><span class="technology">JPA</span><span class="technology">Hibernate</span><span class="technology">PostgreSQL</span><span class="technology">React</span>
-    </div>
-    
 </header>
 
 <div class="project-content">
-    
+    <p>Title: &ldquo;Atlas&rdquo;
+Description: &ldquo;A personal encyclopedia of your own life, where memories, people, places and objects are written down and linked together.&rdquo;</p>
+<p>Date: 2026-08-25</p>
+<p>Category: &ldquo;Full Stack&rdquo;
+Status: &ldquo;In development&rdquo;</p>
+
 <h2 class="relative group">Project Overview
     <div id="project-overview" class="anchor"></div>
     
@@ -606,8 +607,9 @@ collected and connected — almost like a personal Wikipedia for your own life.<
 <strong>Education</strong> -  Datamatiker — 3rd semester
 <strong>School</strong> -    EK                      <br>
 <strong>Year</strong> -      2026                    <br>
-<strong>Status</strong> -    In development          <br>
+<strong>Status</strong> -    In development (backend v1 complete)
 <strong>Type</strong> -      Full Stack Application</p>
+<hr>
 
 <h2 class="relative group">Goal
     <div id="goal" class="anchor"></div>
@@ -620,31 +622,20 @@ collected and connected — almost like a personal Wikipedia for your own life.<
 </h2>
 <p>The goal of the project is to develop a production-oriented backend that demonstrates the principles and technologies
 covered throughout the semester.</p>
-<p>The backend will include:</p>
+<p>The backend includes:</p>
 <ul>
-<li>User authentication and validation</li>
-<li>Role-based access control</li>
-<li>Secure user-specific data</li>
-<li>CRUD functionality</li>
-<li>Business rules and data validation</li>
-<li>JPA and Hibernate persistence</li>
-<li>PostgreSQL database integration</li>
-<li>REST API endpoints</li>
-<li>DTOs for communication between the backend and frontend</li>
-<li>External API integrations</li>
+<li>User authentication with JWT, and role-based access control (<code>USER</code> and <code>ADMIN</code>)</li>
+<li>Secure, user-specific data, where one user can never read another user&rsquo;s pages</li>
+<li>CRUD functionality, business rules and data validation</li>
+<li>JPA and Hibernate persistence with PostgreSQL</li>
+<li>A REST API with DTOs for communication between the backend and frontend</li>
+<li>Concurrency: a scheduled job, a thread pool and thread-safe shared state</li>
+<li>Real-time notifications over a WebSocket</li>
+<li>An external API integration (Google Gemini)</li>
+<li>Automated tests of the database layer and of every endpoint</li>
 <li>A structure that can be expanded with additional functionality in the future</li>
 </ul>
 <hr>
-
-<h2 class="relative group">The Idea Behind Atlas
-    <div id="the-idea-behind-atlas" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
-        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#the-idea-behind-atlas" aria-label="Anchor">#</a>
-    </span>
-    
-</h2>
 <p>Atlas is built around the idea of <strong>preserving your personal story</strong>.</p>
 <p>Instead of treating memories as isolated diary entries, the application allows different parts of a person&rsquo;s life to be
 connected.</p>
@@ -652,11 +643,44 @@ connected.</p>
 <ul>
 <li>The people who were there</li>
 <li>The places that were visited</li>
-<li>Photos and other artifacts</li>
+<li>Objects that carry meaning</li>
 <li>Related memories</li>
 <li>A larger chapter of the user&rsquo;s life</li>
 </ul>
-<p>This creates a more interconnected way of documenting life rather than simply writing individual journal entries.</p>
+<p>The user highlights a piece of text, links it to another page, and every page can then show everything that links <em>to</em>
+it. This creates a more interconnected way of documenting life rather than simply writing individual journal entries.</p>
+<hr>
+
+<h2 class="relative group">Core Concepts
+    <div id="core-concepts" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#core-concepts" aria-label="Anchor">#</a>
+    </span>
+    
+</h2>
+<p>Atlas is built around several central concepts:</p>
+<p><strong>Chapters and Stories</strong>
+Larger periods or narratives in a person&rsquo;s life.</p>
+<p><strong>Memories</strong>
+Individual moments or experiences that the user wants to preserve.</p>
+<p><strong>People and Places</strong>
+The people and the locations that matter to the user&rsquo;s story.</p>
+<p><strong>Artifacts</strong>
+Objects that carry personal meaning, such as albums, films, or clothing. Each user creates their own categories.</p>
+<p><strong>Entity Lists and Fragments</strong>
+Custom collections (favourite films, books, quotes) and short notes that do not need a full page.</p>
+<p><strong>Mentions</strong>
+Links from a highlighted piece of text in one page to another page. They make it possible to see which pages link
+<em>to</em> a given person, place or memory (backlinks).</p>
+<p><strong>Time Capsules</strong>
+Messages that stay sealed until a date in the future. When the date arrives, the owner is notified.</p>
+<p><strong>Notifications and Devlog</strong>
+Admins publish announcements (a changelog), and every user receives a notification. Notifications are saved in the
+database and pushed live to anyone who is connected.</p>
+<p><strong>AI journaling prompts</strong>
+Writing prompts generated with Google Gemini, with a limit on how many a user can request.</p>
 <hr>
 
 <h2 class="relative group">Architecture
@@ -679,16 +703,22 @@ connected.</p>
     </span>
     
 </h3>
-<p>The backend is being developed in <strong>Java</strong> and provides the API and business logic for Atlas.</p>
-<p>The current backend stack includes:</p>
+<p>The backend is developed in <strong>Java</strong> with <strong>Javalin</strong> and provides the API and business logic for Atlas.</p>
+<p>A request passes through clear layers:</p>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">Client -&gt; SecurityFilter (JWT, role) -&gt; Controller -&gt; Service -&gt; DAO -&gt; PostgreSQL</span></span></code></pre></div></div>
 <ul>
-<li>Java</li>
-<li>JPA</li>
-<li>Hibernate</li>
-<li>PostgreSQL</li>
+<li><strong>Controllers</strong> validate the request and choose the status code.</li>
+<li><strong>Services</strong> hold the rules, such as ownership checks.</li>
+<li><strong>DAOs</strong> handle persistence with JPA and Hibernate. A generic DAO and a generic controller remove repeated CRUD code.</li>
+<li><strong>DTOs and mappers</strong> keep the database entities out of the API.</li>
+<li><strong>Dependencies</strong> are wired by hand in one place, using constructor injection.</li>
 </ul>
-<p>The backend is responsible for handling persistence, relationships between entities, validation, authentication, and
-communication with the frontend.</p>
+<p>Alongside the request flow, some work runs in the background:</p>
+<ul>
+<li>a scheduled thread checks time capsules and keeps WebSocket connections alive</li>
+<li>a thread pool creates devlog notifications for every user</li>
+<li>a registry of open WebSocket connections delivers notifications live</li>
+</ul>
 
 <h3 class="relative group">Frontend
     <div id="frontend" class="anchor"></div>
@@ -701,31 +731,7 @@ communication with the frontend.</p>
 </h3>
 <p>The frontend is being developed with <strong>React</strong>.</p>
 <p>It will provide the visual interface through which users can create, view, edit, and organize their personal content.</p>
-<p>The frontend will communicate with the Java backend through the REST API.</p>
-<hr>
-
-<h2 class="relative group">Core Concepts
-    <div id="core-concepts" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
-        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#core-concepts" aria-label="Anchor">#</a>
-    </span>
-    
-</h2>
-<p>Atlas is built around several central concepts:</p>
-<p><strong>Chapters</strong>
-Larger periods or phases of a person&rsquo;s life.</p>
-<p><strong>Memories</strong>
-Individual moments or experiences that the user wants to preserve.</p>
-<p><strong>People</strong>
-People who are connected to memories, chapters, or other parts of the user&rsquo;s story.</p>
-<p><strong>Places</strong>
-Locations that have significance to the user&rsquo;s life.</p>
-<p><strong>Artifacts</strong>
-Objects or pieces of media that carry personal meaning, such as albums, films, or other meaningful objects.</p>
-<p><strong>Entity Lists</strong>
-Custom collections that allow users to organize related items, such as favourite movies, quotes, books, or memories.</p>
+<p>The frontend communicates with the Java backend through the REST API and a WebSocket for live notifications.</p>
 <hr>
 
 <h2 class="relative group">Development
@@ -737,9 +743,12 @@ Custom collections that allow users to organize related items, such as favourite
     </span>
     
 </h2>
-<p>Atlas is currently <strong>in development as part of my 3rd-semester Datamatiker project at EK</strong>.</p>
-<p>The project is being developed incrementally, beginning with the backend architecture, database model, and persistence
-layer before connecting the API to the React frontend.</p>
+<p>Atlas is developed as part of my <strong>3rd-semester Datamatiker project at EK</strong>.</p>
+<p>The project has been built incrementally: the data model and persistence layer first, then the REST API, security and
+tests, and finally concurrency and real-time notifications. I write a weekly log about the choices and trade-offs along
+the way.</p>
+<p>The first version of the backend is complete. Features I want to build next include images on pages, search across all
+pages, a timeline, and friends with shared pages.</p>
 <p>The long-term goal is to create a polished full-stack application that demonstrates both the technical concepts learned
 during the semester and a practical, user-focused product.</p>
 <hr>
@@ -765,17 +774,34 @@ during the semester and a practical, user-focused product.</p>
 </h3>
 <ul>
 <li>Java</li>
-<li>JPA</li>
-<li>Hibernate</li>
+<li>Javalin (HTTP and WebSockets)</li>
+<li>JPA and Hibernate</li>
 <li>PostgreSQL</li>
+<li>JWT and BCrypt</li>
+<li>Jackson</li>
 </ul>
 
-<h3 class="relative group">Frontend
-    <div id="frontend-1" class="anchor"></div>
+<h3 class="relative group">Testing
+    <div id="testing" class="anchor"></div>
     
     <span
         class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
-        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#frontend-1" aria-label="Anchor">#</a>
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#testing" aria-label="Anchor">#</a>
+    </span>
+    
+</h3>
+<ul>
+<li>JUnit and Hamcrest</li>
+<li>REST Assured</li>
+<li>Testcontainers (a real PostgreSQL in Docker)</li>
+</ul>
+
+<h3 class="relative group">Frontend (To be made)
+    <div id="frontend-to-be-made" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#frontend-to-be-made" aria-label="Anchor">#</a>
     </span>
     
 </h3>
@@ -798,7 +824,9 @@ during the semester and a practical, user-focused product.</p>
 <ul>
 <li>IntelliJ IDEA</li>
 <li>pgAdmin</li>
+<li>Docker</li>
 <li>Git / GitHub</li>
+<li>Figma (diagrams)</li>
 </ul>
 
 </div>
@@ -815,30 +843,30 @@ during the semester and a practical, user-focused product.</p>
     <div class="changelog-list">
         
         <article class="changelog-entry">
+            <div class="changelog-date">06 October 2026</div>
+            <h3><a href="/Portfolio/projects/atlas/changelog/week-08/">Week 8 — Security &amp; Hardening</a></h3>
+            <p>Roles, admin-only routes and a round of fixes after looking at the API with a critical eye</p>
+            <a href="/Portfolio/projects/atlas/changelog/week-08/">Read entry →</a>
+        </article>
+        
+        <article class="changelog-entry">
             <div class="changelog-date">05 October 2026</div>
             <h3><a href="/Portfolio/projects/atlas/changelog/week-07/">Week 7 — Rest assured</a></h3>
-            <p>Created rest assured test for controller classes</p>
+            <p>Testing all endpoints with REST Assured, describing behaviour in Gherkin, and what the tests revealed about security.</p>
             <a href="/Portfolio/projects/atlas/changelog/week-07/">Read entry →</a>
         </article>
         
         <article class="changelog-entry">
             <div class="changelog-date">28 September 2026</div>
             <h3><a href="/Portfolio/projects/atlas/changelog/week-06/">Week 6 — Rest API</a></h3>
-            <p>Created endpoints for Atlas api</p>
+            <p>Building the REST layer: JWT, a generic controller and one resource after another.</p>
             <a href="/Portfolio/projects/atlas/changelog/week-06/">Read entry →</a>
-        </article>
-        
-        <article class="changelog-entry">
-            <div class="changelog-date">21 September 2026</div>
-            <h3><a href="/Portfolio/projects/atlas/changelog/week-05/">Week 5 — Concurrency</a></h3>
-            <p>Thoughts about where to implement concurrency</p>
-            <a href="/Portfolio/projects/atlas/changelog/week-05/">Read entry →</a>
         </article>
         
         <article class="changelog-entry">
             <div class="changelog-date">15 September 2026</div>
             <h3><a href="/Portfolio/projects/atlas/changelog/week-04/">Week 4 — API endpoints &amp; privacy</a></h3>
-            <p>Integration API and extracting data from JSON file, as well as devoping the first privacy layer</p>
+            <p>Getting the first endpoints running with Javalin, thinking about privacy, and calling an external API.</p>
             <a href="/Portfolio/projects/atlas/changelog/week-04/">Read entry →</a>
         </article>
         
