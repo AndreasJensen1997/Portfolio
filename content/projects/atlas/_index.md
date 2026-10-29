@@ -9,13 +9,6 @@ status: "In development"
 
 
 ---
-Title: "Atlas"
-Description: "A personal encyclopedia of your own life, where memories, people, places and objects are written down and linked together."
-
-Date: 2026-08-25
-
-Category: "Full Stack"
-Status: "In development"
 
 ## Project Overview
 
