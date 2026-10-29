@@ -7,7 +7,27 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>© 2026 Andreas Jensen</copyright>
-    <lastBuildDate>Tue, 06 Oct 2026 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/Portfolio/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 27 Oct 2026 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/Portfolio/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Week 10 — Wrap Up</title>
+      <link>http://localhost:1313/Portfolio/projects/atlas/changelog/week-10/</link>
+      <pubDate>Tue, 27 Oct 2026 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/Portfolio/projects/atlas/changelog/week-10/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>Week 9 — Concurrency &amp; WebSockets</title>
+      <link>http://localhost:1313/Portfolio/projects/atlas/changelog/week-09/</link>
+      <pubDate>Tue, 20 Oct 2026 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/Portfolio/projects/atlas/changelog/week-09/</guid>
+      <description></description>
+      
+    </item>
     
     <item>
       <title>Week 8 — Security &amp; Hardening</title>

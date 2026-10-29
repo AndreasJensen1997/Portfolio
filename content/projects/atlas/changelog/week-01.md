@@ -17,10 +17,11 @@ I also wrote my first DAO through an `IDAO` interface with basic CRUD, and tried
 
 
 
-## What I learned
-
-
 ### Domain model
+
+Below is a simplified class diagram of the domain model. My domain model was sketched by hand, which is why i dont have a good overview of that. But based on the domain model, i made this class diagram that represent the entire project truly. 
+
+![Class diagram](img/class-diagram.png)
 
 ## Reflections
 
